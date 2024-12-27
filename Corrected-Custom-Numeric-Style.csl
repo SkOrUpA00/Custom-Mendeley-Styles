@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+    <info>
+        <title>Custom Numeric Style</title>
+        <id>https://github.com/SkOrUpA00/Custom-Mendeley-Styles/Custom-Numeric-Style-Access-Only</id>
+        <link href="https://github.com/SkOrUpA00/Custom-Mendeley-Styles/Custom-Numeric-Style-Access-Only" rel="self"/>
+        <author>
+            <name>Custom Style Creator</name>
+        </author>
+        <updated>2024-12-27</updated>
+    </info>
+    <macro name="author">
+        <names variable="author">
+            <name form="long" and="text" delimiter=", "/>
+            <label form="short" prefix=" "/>
+            <substitute>
+                <text variable="editor"/>
+                <text term="anonymous"/>
+            </substitute>
+        </names>
+    </macro>
+    <macro name="title">
+        <text variable="title" font-style="italic"/>
+    </macro>
+    <macro name="year">
+        <date variable="issued">
+            <date-part name="year"/>
+        </date>
+    </macro>
+    <macro name="url">
+        <group>
+            <text variable="URL"/>
+        </group>
+    </macro>
+    <citation>
+        <layout prefix="[" suffix="]" delimiter=", ">
+            <text variable="citation-number"/>
+        </layout>
+    </citation>
+    <bibliography>
+        <layout prefix="[" suffix="]" delimiter=", ">
+            <text variable="citation-number"/>
+            <group delimiter=", ">
+                <choose>
+                    <if type="webpage">
+                        <call macro="url"/>
+                    </if>
+                    <else>
+                        <call macro="author"/>
+                        <call macro="title"/>
+                        <call macro="year"/>
+                    </else>
+                </choose>
+            </group>
+        </layout>
+        <sort>
+            <key variable="citation-number"/>
+        </sort>
+    </bibliography>
+</style>
