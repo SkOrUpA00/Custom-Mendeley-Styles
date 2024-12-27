@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:style xmlns:ns0="http://purl.org/net/xbiblio/csl" version="1.0">
+    <ns0:info>
+        <ns0:title>Custom Numeric Style</ns0:title>
+        <ns0:id>https://github.com/SkOrUpA00/Custom-Mendeley-Styles/Custom-Numeric-Style-Access-Only</ns0:id>
+        <ns0:link href="https://github.com/SkOrUpA00/Custom-Mendeley-Styles/Custom-Numeric-Style-Access-Only" rel="self" />
+        <ns0:author>
+            <ns0:name>Custom Style Creator</ns0:name>
+        </ns0:author>
+        <ns0:updated>2024-12-27</ns0:updated>
+    </ns0:info>
+    <ns0:macros><ns0:macro name="author">
+        <ns0:names variable="author">
+            <ns0:name form="long" and="text" delimiter=", " />
+            <ns0:label form="short" prefix=" " />
+            <ns0:substitute>
+                <ns0:text variable="editor" />
+                <ns0:text term="anonymous" />
+            </ns0:substitute>
+        </ns0:names>
+    </ns0:macro>
+    <ns0:macro name="title">
+        <ns0:text variable="title" font-style="italic" />
+    </ns0:macro>
+    <ns0:macro name="year">
+        <ns0:date variable="issued">
+            <ns0:date-part name="year" />
+        </ns0:date>
+    </ns0:macro>
+    <ns0:macro name="url">
+        <ns0:group>
+            <ns0:text variable="URL" />
+        </ns0:group>
+    </ns0:macro>
+    </ns0:macros><ns0:citation>
+        <ns0:layout prefix="[" suffix="]" delimiter=", ">
+            <ns0:text variable="citation-number" />
+        </ns0:layout>
+    </ns0:citation>
+    <ns0:bibliography>
+        <ns0:layout prefix="[" suffix="]" delimiter=", ">
+            <ns0:text variable="citation-number" />
+            <ns0:group delimiter=", ">
+                <ns0:choose>
+                    <ns0:if type="webpage">
+                        <ns0:call macro="url" />
+                    </ns0:if>
+                    <ns0:else>
+                        <ns0:call macro="author" />
+                        <ns0:call macro="title" />
+                        <ns0:call macro="year" />
+                    </ns0:else>
+                </ns0:choose>
+            </ns0:group>
+        </ns0:layout>
+        <ns0:sort>
+            <ns0:key variable="citation-number" />
+        </ns0:sort>
+    </ns0:bibliography>
+</ns0:style>
